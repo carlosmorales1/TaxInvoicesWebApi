@@ -1,0 +1,79 @@
+<div class="container">
+  <button (click)="clearCart()" class="new-voucher-button">Nueva factura</button>
+
+  <div class="customer-info">
+    <form [formGroup]="myForm">
+      <div class="field">
+        <label>Cliente</label>
+        <select formControlName="customerId">
+          <option value="">Seleccionar Cliente</option>
+          <option *ngFor="let customertOption of customers" [value]="customertOption.id">{{customertOption.businessName}}</option>
+        </select>
+        <div class="required" *ngIf="myForm.get('customerId')?.hasError('required')">
+          Este campo es obligatorio.
+        </div>
+      </div>
+      <div class="field">
+        <label>Numero de Factura</label>
+        <input formControlName="invoiceNumber" type="text">
+        <div class="required" *ngIf="myForm.get('invoiceNumber')?.hasError('required')">
+          Este campo es obligatorio.
+        </div>
+        <div class="required" *ngIf="myForm.get('invoiceNumber')?.hasError('notInteger')">
+          Solo se permiten numeros enteros.
+        </div>
+      </div>
+    </form>
+  </div>
+  <button (click)="addProductToCart()" class="new-button">Agregar producto</button>
+  <table class="products">
+    <thead>
+      <tr>
+        <th>Prodcuto</th>
+        <th>Precio Unitario</th>
+        <th>Cantidad</th>
+        <th>Imagen</th>
+        <th>Totales</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of cartProducts">
+        <td>
+          <select (change)="onProductSelected($event, product)">
+            <option value="0">Seleccionar Producto</option>
+            <option *ngFor="let productOption of fixedProducts" [value]="productOption.id">{{productOption.name}}</option>
+          </select>
+        </td>
+        <td>
+          {{product.product ? formatPrice(product.product!.unitPrice): 0}}
+        </td>
+        <td>
+          <input (change)="changeQuantity($event, product)" type="number" step="1" value="1" min="0" >
+        </td>
+        <td>
+          <img [src]="product.product ? product.product!.imageUrl : ''" [alt]="product.product ? product.product!.name : ''">
+        </td>
+        <td>
+          {{formatPrice(product.total)}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="summary">
+    <tr>
+      <td>Sub total</td>
+      <td>{{formatPrice(calculateSubtotal())}}</td>
+    </tr>
+    <tr>
+      <td>Impuestos (19%)</td>
+      <td>{{formatPrice(calculateTaxes())}}</td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td>{{formatPrice(calculateTotal())}}</td>
+    </tr>
+  </table>
+
+  <button (click)="saveInvoice()" class="save-button" [class.disabled-button]="!this.myForm.valid">Guardar</button>
+</div>

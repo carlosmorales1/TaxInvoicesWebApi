@@ -1,0 +1,155 @@
+.container {
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+.radio {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+  padding: 10px 0;
+  display: inline;
+}
+
+.title-info {
+  text-align: left;
+}
+
+.new-voucher-button {
+  left: 10px;
+  display: block;
+}
+
+.new-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  float: left;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  display: inline;
+}
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+.customer-info .field {
+  display: inline-block;
+  margin: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+table.products {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+  table.products th,
+  table.products td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+
+  table.products th {
+    background-color: #007bff;
+    color: white;
+  }
+
+  table.products td select,
+  table.products td input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  table.products td img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+table.summary {
+  width: 30%;
+  float: right;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: right;
+}
+
+  table.summary td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+
+.save-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  float: left;
+}
+
+  .save-button:hover {
+    background-color: #0056b3;
+  }
+
+.search-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+  .search-section label {
+    margin-right: 10px;
+  }
+
+  .search-section input[type="radio"] {
+    margin-right: 5px;
+  }

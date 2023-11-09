@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="search-section">
+    <label for="search-type">Tipo de Búsqueda:</label>
+    <div class="radio" *ngFor="let option of radioOptions">
+      <input
+        type="radio"
+        [id]="option.value"
+        [value]="option.value"
+        [checked]="option.value === selectedOption"
+        (change)="onRadioChange(option.value)"
+      />
+      <label [for]="option.value">{{ option.label }}</label>
+    </div>    
+  </div>
+  <div class="customer-info">
+    <form [formGroup]="myForm">
+      <div class="field">
+        <label>Cliente</label>
+        <select formControlName="customerId" [attr.disabled]="selectedOption != 'customer' ? true: null">
+          <option value="">Seleccionar Cliente</option>
+          <option *ngFor="let customertOption of customers" [value]="customertOption.id">{{customertOption.businessName}}</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Numero de Factura</label>
+        <input formControlName="invoiceNumber" type="text" [attr.disabled]="selectedOption == 'customer' ? true: null">
+      </div>
+      <button (click)="search()">Buscar</button>
+    </form>
+  </div>
+  <table class="products">
+    <thead>
+      <tr>
+        <th>Numero de factura</th>
+        <th>Fecha Emision</th>
+        <th>Total facturado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>
+          {{product.numberInvoice}}
+        </td>
+        <td>
+          {{product.dateInvoice}}
+        </td>
+        <td>
+          {{formatPrice(product.totalInvoice)}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
